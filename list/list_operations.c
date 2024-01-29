@@ -1,34 +1,4 @@
-/***********
- *包含了线性表的一些基本操作，函数命名比较随意，可以参照注释进行阅读
-
-************/
-
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-
-#define maxsize 100
-#define initsize 10
-typedef int elemtype;
-
-//静态存储
-/*
-typedef struct{
-    elemtype data[maxsize];
-    int length;
-}
-*/
-
-//动态存储
-typedef struct {
-    int length;
-    elemtype *data;
-} sqList;
-/********************************
-如果只谈论算法，只看下面的部分即可
-
-*********************************/
-
+#include "list_operations.h"
 
 // 初始化
 void InitList(sqList *L){  //需要改变传入sqList的值，因此使用*L
@@ -96,43 +66,4 @@ elemtype getElem(sqList L, int i){
         return L.data[i-1];
     }
 
-}
-// 输出操作，按前后顺序输出线性表L所有元素值
-void printfList(sqList L){
-    for(int i = 0; i<L.length; i++){
-        printf("%d ", L.data[i]);
-    }
-    printf("\n");
-}
-
-// 判断表是否为空，空返回true
-bool empty(sqList L){
-    if(L.length == 0){
-        printf("it is empty.\n");
-        return true;
-    }
-    else{
-        printf("not empty\n");
-        return false;
-    }
-}
-
-
-
-/***************************
-算法部分在已经结束
-下面可忽视
-***************************/
-int main(){
-    sqList my_list;
-    InitList(&my_list);
-    leng(my_list);
-    insert(&my_list,1,10);
-    insert(&my_list,2,11);
-    Locate(my_list,11);
-    getElem(my_list,2);
-    empty(my_list);
-    printfList(my_list);
-    leng(my_list);
-    return 0;
 }
