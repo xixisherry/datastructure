@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+
+typedef int elemtype;
+typedef struct 
+{
+    elemtype data;
+    struct Linknode *next;
+}Linknode;
+
+
+typedef struct 
+{
+    Linknode *front,*rear;
+    int queSize; //队列长
+}squeue;
+
+//构造函数
+squeue *newQueue(){
+    squeue *qu = (squeue*)malloc(sizeof(squeue*));
+    qu->front = NULL;
+    qu->rear = NULL;
+    qu->queSize = 0;
+    return qu;
+}
+
+//判断是否空
+bool isEmpty(squeue *qu){
+    if(qu->front->next == NULL){
+        return true;
+    }
+    else
+    return false;
+}
+
+//判断是够满
+bool isFull(squeue *qu){
+
+}
+
+//入队列
+void push(squeue *qu, elemtype e){
+    Linknode *node = (squeue*)malloc(sizeof(squeue*));
+    if(qu->front == NULL){
+        qu->front = node;
+        qu->rear = node;
+    }
+    else{
+        qu->rear->next = node;
+        
+    }
+    qu->queSize++;
+
+}
+
+//出队列
+int pop(squeue *qu){
+    int num = peek(qu);
+    Linknode *tmp = qu->front;
+    qu->front = qu->front->next;
+    free(tmp);
+    qu->queSize--;
+    return num;
+}
+
+
+
+
+//
+typedef struct 
+{
+    int *nums;
+    int front;
+    int queSize;
+    int queCapacity;
+}arrayqueue;
+
+arrayqueue *newQueue(int capacity){
+    arrayqueue *queue = (arrayqueue*)malloc(sizeof(arrayqueue));
+    queue->queCapacity = capacity;
+}
+
